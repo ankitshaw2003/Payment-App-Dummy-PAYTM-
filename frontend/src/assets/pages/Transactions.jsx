@@ -45,6 +45,9 @@ export const Transactions = function () {
               },
             }
           );
+          console.log("---------------------")
+          console.log(resp.data)
+          console.log("---------------------")
           return [resp.data.user1, resp.data.user2];
         } catch (error) {
           console.log(error);
@@ -65,18 +68,27 @@ export const Transactions = function () {
   }
 
   return (
-    <div className="flex justify-center h-screen items-start">
-      <div className="mx-8 my-8 w-3/5 text-left">
-        {usersData.map(([first, second], index) => (
+  <div className="flex justify-center h-screen items-start">
+    <div className="mx-8 my-8 w-3/5 text-left">
+      {usersData.map(([first, second], index) => {
+        const tx = transactions[index];
+        if (!tx) return null;
+
+        const fromName = first?.firstName ?? "Deleted user";
+        const toName = second?.firstName ?? "Deleted user";
+
+        return (
           <TransactionBlock
             key={index}
             id={index}
-            amount={transactions[index].amount}
-            from={first.firstName}
-            to={second.firstName}
+            amount={tx.amount}
+            from={fromName}
+            to={toName}
           />
-        ))}
-      </div>
+        );
+      })}
     </div>
-  );
+  </div>
+);
+
 };

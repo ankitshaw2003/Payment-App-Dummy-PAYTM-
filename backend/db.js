@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const {DATABASE_URL} = require("./config.js")
 
+
 const ConnectionInstance = async function(){
     try {
         // console.log(DATABASE_URL)

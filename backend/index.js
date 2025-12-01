@@ -13,9 +13,9 @@ app.use(cors())
 app.use("/api/v1",mainRouter)
 
 
-app.listen(4000,()=>{
+app.listen(3000,()=>{
     try {
-        console.log("App is listening at port 4000")
+        console.log("App is listening at port 3000")
         ConnectionInstance()
     } catch (error) {
         console.log(error)
